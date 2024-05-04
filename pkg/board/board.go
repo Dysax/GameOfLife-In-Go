@@ -13,16 +13,20 @@ import (
 // 	{1,1,1,1,1,1,1}
 // }
 
-func DeadState(w int, h int) [][]float64 {
-	boardState := make([][]float64, h)
+func DeadState(w int, h int) [][]int {
+	boardState := make([][]int, h)
 	for i := range boardState {
-		boardState[i] = make([]float64, w)
+		boardState[i] = make([]int, w)
 	}
 	return boardState
 }
 
-func RandomState(w int, h int) [][]float64 {
-	var state [][]float64 = DeadState(w, h)
+/*
+RandomState takes a width and height and returns a 2D array
+of ints either 1, to represent an alive cell , or 0, to represent a dead cell
+*/
+func RandomState(w int, h int) [][]int {
+	var state [][]int = DeadState(w, h)
 	for i := 0; i < h; i++ {
 		for j := 0; j < w; j++ {
 			randomFloat := rand.Float64()
@@ -33,6 +37,5 @@ func RandomState(w int, h int) [][]float64 {
 			}
 		}
 	}
-
 	return state
 }

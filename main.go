@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	w, h := 5, 6
+	w, h := 5, 5
 
 	boardState := board.RandomState(w, h)
 
