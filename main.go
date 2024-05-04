@@ -8,7 +8,8 @@ import (
 
 func main() {
 	w, h := 5, 6
-	boardState := board.DeadState(w, h)
+
+	boardState := board.RandomState(w, h)
 
 	for _, row := range boardState {
 		fmt.Println(row)
