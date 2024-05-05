@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/Dysax/GameOfLife/pkg/board"
 	"github.com/Dysax/GameOfLife/pkg/render"
@@ -18,4 +19,8 @@ func main() {
 	// fmt.Println(len(boardState[0]))
 	// fmt.Printf("board state array item %d\n", boardState[0][0])
 	render.RenderBoard(boardState)
+	time.Sleep(time.Second)
+	newBoard := board.CalculateNewBoard(boardState)
+	render.RenderBoard(newBoard)
+
 }

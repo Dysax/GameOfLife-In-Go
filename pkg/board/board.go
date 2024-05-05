@@ -1,6 +1,7 @@
 package board
 
 import (
+	"fmt"
 	"math/rand/v2"
 )
 
@@ -47,10 +48,16 @@ any live cell with more than 3 live neighbors becomes dead, because of overpopul
 any dead cell with exactly 3 live neighbors becomes alive by reproduction
 */
 func CalculateNewBoard(board [][]int) [][]int {
-	newBoard := board
+	newBoard := make([][]int, len(board))
+	for i := range newBoard {
+		newBoard[i] = make([]int, len(board[i]))
+	}
+
 	for i := 0; i < len(board); i++ {
-		for j := 0; j < len(board[0]); j++ {
-			neighbors := aliveNeighbors(board, j, i)
+		fmt.Printf("accessed board at %d\n", board[i])
+		for j := 0; j < len(board[i]); j++ {
+			fmt.Printf("current cell %d", board[i][j])
+			neighbors := aliveNeighbors(board, i, j)
 			if neighbors == 1 || neighbors == 0 {
 				newBoard[i][j] = 0
 			}
@@ -69,30 +76,31 @@ func CalculateNewBoard(board [][]int) [][]int {
 	return newBoard
 }
 
-func aliveNeighbors(board [][]int, x, y int) int {
+// this is aweful and likely the reason for the error. Fix this.
+func aliveNeighbors(board [][]int, y, x int) int {
 	count := 0
-	if board[x][y-1] != 0 {
+	if board[y][x-1] != 0 {
 		count++
 	}
-	if board[x][y+1] != 0 {
+	if board[y][x+1] != 0 {
 		count++
 	}
-	if board[x-1][y] != 0 {
+	if board[y-1][x] != 0 {
 		count++
 	}
-	if board[x+1][y] != 0 {
+	if board[y+1][x] != 0 {
 		count++
 	}
-	if board[x-1][y-1] != 0 {
+	if board[y-1][x-1] != 0 {
 		count++
 	}
-	if board[x+1][y-1] != 0 {
+	if board[y+1][x-1] != 0 {
 		count++
 	}
-	if board[x-1][y+1] != 0 {
+	if board[y-1][x+1] != 0 {
 		count++
 	}
-	if board[x+1][y+1] != 0 {
+	if board[y+1][x+1] != 0 {
 		count++
 	}
 	return count
