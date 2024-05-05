@@ -47,21 +47,53 @@ any live cell with more than 3 live neighbors becomes dead, because of overpopul
 any dead cell with exactly 3 live neighbors becomes alive by reproduction
 */
 func CalculateNewBoard(board [][]int) [][]int {
+	newBoard := board
+	for i := 0; i < len(board); i++ {
+		for j := 0; j < len(board[0]); j++ {
+			neighbors := aliveNeighbors(board, j, i)
+			if neighbors == 1 || neighbors == 0 {
+				newBoard[i][j] = 0
+			}
+			if neighbors == 2 || neighbors == 3 {
+				continue
+			}
+			if neighbors > 3 {
+				newBoard[i][j] = 0
+			}
+			if board[i][j] == 0 && neighbors == 3 {
+				newBoard[i][j] = 1
+			}
+		}
+	}
 
 	return newBoard
 }
 
 func aliveNeighbors(board [][]int, x, y int) int {
 	count := 0
-	if board[x][y] != 1 {
-		return 0
-	} else {
-		if board[x][y] == board[x][y-1] {
-			count++
-		}
-		if board[x][y] == board[x][y+1] {
-			count++
-		}
+	if board[x][y-1] != 0 {
+		count++
+	}
+	if board[x][y+1] != 0 {
+		count++
+	}
+	if board[x-1][y] != 0 {
+		count++
+	}
+	if board[x+1][y] != 0 {
+		count++
+	}
+	if board[x-1][y-1] != 0 {
+		count++
+	}
+	if board[x+1][y-1] != 0 {
+		count++
+	}
+	if board[x-1][y+1] != 0 {
+		count++
+	}
+	if board[x+1][y+1] != 0 {
+		count++
 	}
 	return count
 }
