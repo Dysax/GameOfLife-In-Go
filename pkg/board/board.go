@@ -39,3 +39,29 @@ func RandomState(w int, h int) [][]int {
 	}
 	return state
 }
+
+/*
+Any live cell with 0 or 1 live neighbors becomes dead, because of underpopulation
+any live cell with 2 or 3 live neighbors stays alive, because its neighborhood is correct
+any live cell with more than 3 live neighbors becomes dead, because of overpopulation
+any dead cell with exactly 3 live neighbors becomes alive by reproduction
+*/
+func CalculateNewBoard(board [][]int) [][]int {
+
+	return newBoard
+}
+
+func aliveNeighbors(board [][]int, x, y int) int {
+	count := 0
+	if board[x][y] != 1 {
+		return 0
+	} else {
+		if board[x][y] == board[x][y-1] {
+			count++
+		}
+		if board[x][y] == board[x][y+1] {
+			count++
+		}
+	}
+	return count
+}
