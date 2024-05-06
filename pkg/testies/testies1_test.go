@@ -45,3 +45,22 @@ func TestComeAlive(t *testing.T) {
 		t.Errorf("Expected board state did not match actual.\nExpected: %v\nActual: %v\n", expected_next_state2, actual_next_state2)
 	}
 }
+
+func TestDieProperly(t *testing.T) {
+	init_state3 := [][]int{
+		{0, 0, 1},
+		{0, 1, 1},
+		{0, 1, 1},
+	}
+
+	expected_next_state3 := [][]int{
+		{0, 1, 1},
+		{0, 0, 0},
+		{0, 1, 1},
+	}
+
+	actual_next_state3 := board.CalculateNewBoard(init_state3)
+	if !reflect.DeepEqual(expected_next_state3, actual_next_state3) {
+		t.Errorf("Expected board state did not match actual.\nExpected: %v\nActual: %v\n", expected_next_state3, actual_next_state3)
+	}
+}
