@@ -71,7 +71,7 @@ func CalculateNewBoard(board [][]int) [][]int {
 	return newBoard
 }
 
-// this is aweful and likely the reason for the error. Fix this.
+// TODO: Comment this function better
 func aliveNeighbors(board [][]int, y, x int) int {
 	var neighborArray = [][]int{
 		{-1, -1},

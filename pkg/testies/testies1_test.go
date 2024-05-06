@@ -28,6 +28,7 @@ func TestDeadStayDead(t *testing.T) {
 	}
 }
 
+// should make the target cell alive
 func TestComeAlive(t *testing.T) {
 	init_state2 := [][]int{
 		{0, 0, 1},
@@ -46,6 +47,7 @@ func TestComeAlive(t *testing.T) {
 	}
 }
 
+// should kill the target cell
 func TestDieProperly(t *testing.T) {
 	init_state3 := [][]int{
 		{0, 0, 1},

@@ -40,16 +40,7 @@ func main() {
 	w, h := 180, 60
 
 	boardState := board.RandomState(w, h)
-
-	// for _, row := range boardState {
-	// 	fmt.Println(row)
-	// }
-	// fmt.Println(len(boardState[0]))
-	// fmt.Printf("board state array item %d\n", boardState[0][0])
 	render.RenderBoard(boardState)
-	//time.Sleep(time.Second)
-	//newBoard := board.CalculateNewBoard(boardState)
-	//render.RenderBoard(newBoard)
 
 	go func() {
 		for {
@@ -78,7 +69,6 @@ func main() {
 		}
 	}()
 
-	//time.Sleep(2500 * time.Millisecond)
 	<-done
 	ticker.Stop()
 	fmt.Println("game over")
