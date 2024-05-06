@@ -32,11 +32,12 @@ func main() {
 	}
 	defer keyboard.Close()
 
-	ticker := time.NewTicker(33 * time.Millisecond)
-	//ticker := time.NewTicker(time.Millisecond)
+	//ticker := time.NewTicker(33 * time.Millisecond)
+	//ticker := time.NewTicker(67 * time.Millisecond)
+	ticker := time.NewTicker(80 * time.Millisecond)
 	done := make(chan bool)
 
-	w, h := 80, 20
+	w, h := 180, 60
 
 	boardState := board.RandomState(w, h)
 

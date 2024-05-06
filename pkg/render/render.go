@@ -8,18 +8,18 @@ import (
 func RenderBoard(array [][]int) {
 	// top boarder
 	for k := 0; k < len(array[0])+2; k++ {
-		fmt.Printf("_")
+		fmt.Printf("═")
 	}
 	fmt.Println()
 
 	for i := 0; i < len(array); i++ {
-		fmt.Printf("|")
+		fmt.Printf("║")
 		DrawLine(array[i])
-		fmt.Printf("|\n")
+		fmt.Printf("║\n")
 	}
 
 	for k := 0; k < len(array[0])+2; k++ {
-		fmt.Printf("-")
+		fmt.Printf("═")
 	}
 	fmt.Println()
 }
@@ -29,7 +29,7 @@ func DrawLine(array []int) {
 
 	for i := 0; i < len(array); i++ {
 		if array[i] == 1 {
-			fmt.Printf("#")
+			fmt.Printf("█")
 		} else {
 			fmt.Printf(" ")
 		}
