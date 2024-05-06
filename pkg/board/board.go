@@ -78,30 +78,32 @@ func CalculateNewBoard(board [][]int) [][]int {
 
 // this is aweful and likely the reason for the error. Fix this.
 func aliveNeighbors(board [][]int, y, x int) int {
-	count := 0
-	if board[y][x-1] != 0 {
-		count++
+	var neighborArray = [][]int{
+		{0, 1},
+		{1, -1},
+		{0, -1},
+		{1, -1},
+		{-1, 0},
+		{1, 0},
+		{-1, 1},
+		{0, 1},
+		{1, 1},
 	}
-	if board[y][x+1] != 0 {
-		count++
-	}
-	if board[y-1][x] != 0 {
-		count++
-	}
-	if board[y+1][x] != 0 {
-		count++
-	}
-	if board[y-1][x-1] != 0 {
-		count++
-	}
-	if board[y+1][x-1] != 0 {
-		count++
-	}
-	if board[y-1][x+1] != 0 {
-		count++
-	}
-	if board[y+1][x+1] != 0 {
-		count++
+	var count int = 0
+
+	for _, n := range neighborArray {
+		row := y + n[0]
+		col := x + n[1]
+
+		if row < 0 || row >= len(board) {
+			continue
+		}
+		if col < 0 || col >= len(board) {
+			continue
+		}
+		if board[row][col] == 1 {
+			count++
+		}
 	}
 	return count
 }
