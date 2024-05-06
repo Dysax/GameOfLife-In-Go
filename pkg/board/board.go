@@ -54,7 +54,7 @@ func CalculateNewBoard(board [][]int) [][]int {
 	}
 
 	for i := 0; i < len(board); i++ {
-		fmt.Printf("accessed board at %d\n", board[i])
+		fmt.Printf("accessed board at row %d\n", board[i])
 		for j := 0; j < len(board[i]); j++ {
 			fmt.Printf("current cell %d", board[i][j])
 			neighbors := aliveNeighbors(board, i, j)
