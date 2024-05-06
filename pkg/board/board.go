@@ -52,20 +52,18 @@ func CalculateNewBoard(board [][]int) [][]int {
 		newBoard[i] = make([]int, len(board[i]))
 	}
 
-	for i := 0; i < len(board); i++ {
-		for j := 0; j < len(board[i]); j++ {
-			neighbors := aliveNeighbors(board, i, j)
-			if neighbors == 1 || neighbors == 0 {
-				newBoard[i][j] = 0
+	for y := 0; y < len(board); y++ {
+		for x := 0; x < len(board[y]); x++ {
+			newBoard[y][x] = board[y][x]
+			neighbors := aliveNeighbors(board, y, x)
+			if neighbors < 2 {
+				newBoard[y][x] = 0
 			}
-			if neighbors == 2 || neighbors == 3 {
-				continue
+			if neighbors >= 4 {
+				newBoard[y][x] = 0
 			}
-			if neighbors > 3 {
-				newBoard[i][j] = 0
-			}
-			if board[i][j] == 0 && neighbors == 3 {
-				newBoard[i][j] = 1
+			if neighbors == 3 {
+				newBoard[y][x] = 1
 			}
 		}
 	}
@@ -76,7 +74,6 @@ func CalculateNewBoard(board [][]int) [][]int {
 // this is aweful and likely the reason for the error. Fix this.
 func aliveNeighbors(board [][]int, y, x int) int {
 	var neighborArray = [][]int{
-		{0, 1},
 		{1, -1},
 		{0, -1},
 		{1, -1},
@@ -86,11 +83,11 @@ func aliveNeighbors(board [][]int, y, x int) int {
 		{0, 1},
 		{1, 1},
 	}
-	var count int = 0
+	count := 0
 
 	for _, n := range neighborArray {
-		row := y + n[0]
-		col := x + n[1]
+		row := y + n[1]
+		col := x + n[0]
 
 		if row < 0 || row >= len(board) {
 			continue

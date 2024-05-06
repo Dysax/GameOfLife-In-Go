@@ -24,7 +24,7 @@ func TestDeadStayDead(t *testing.T) {
 	actual_next_state1 := board.CalculateNewBoard(init_state1)
 
 	if !reflect.DeepEqual(expected_next_state1, actual_next_state1) {
-		t.Errorf("Expected board state did not match actual.\nExpected: %v\nActual: %v", expected_next_state1, actual_next_state1)
+		t.Errorf("Expected board state did not match actual.\nExpected: %v\nActual: %v\n", expected_next_state1, actual_next_state1)
 	}
 }
 
@@ -42,6 +42,6 @@ func TestComeAlive(t *testing.T) {
 	}
 	actual_next_state2 := board.CalculateNewBoard(init_state2)
 	if !reflect.DeepEqual(expected_next_state2, actual_next_state2) {
-		t.Errorf("Expected board state did not match actual.\nExpected: %v\nActual: %v", expected_next_state2, actual_next_state2)
+		t.Errorf("Expected board state did not match actual.\nExpected: %v\nActual: %v\n", expected_next_state2, actual_next_state2)
 	}
 }
