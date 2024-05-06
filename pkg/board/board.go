@@ -1,7 +1,6 @@
 package board
 
 import (
-	"fmt"
 	"math/rand/v2"
 )
 
@@ -54,9 +53,7 @@ func CalculateNewBoard(board [][]int) [][]int {
 	}
 
 	for i := 0; i < len(board); i++ {
-		fmt.Printf("accessed board at row %d\n", board[i])
 		for j := 0; j < len(board[i]); j++ {
-			fmt.Printf("current cell %d", board[i][j])
 			neighbors := aliveNeighbors(board, i, j)
 			if neighbors == 1 || neighbors == 0 {
 				newBoard[i][j] = 0
