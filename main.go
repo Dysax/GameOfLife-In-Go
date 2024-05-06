@@ -32,8 +32,8 @@ func main() {
 	}
 	defer keyboard.Close()
 
-	ticker := time.NewTicker(33.34 * float64(time.Millisecond))
-	//ticker := time.NewTicker(.5 * float64(time.Millisecond))
+	ticker := time.NewTicker(33 * time.Millisecond)
+	//ticker := time.NewTicker(time.Millisecond)
 	done := make(chan bool)
 
 	w, h := 80, 20
