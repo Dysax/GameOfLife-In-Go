@@ -25,7 +25,7 @@ func clearConsole() {
 }
 
 func main() {
-	clearConsole()
+
 	err := keyboard.Open()
 	if err != nil {
 		panic(err)
@@ -34,10 +34,10 @@ func main() {
 
 	//ticker := time.NewTicker(33 * time.Millisecond)
 	//ticker := time.NewTicker(67 * time.Millisecond)
-	ticker := time.NewTicker(80 * time.Millisecond)
+	ticker := time.NewTicker(88 * time.Millisecond)
 	done := make(chan bool)
 
-	w, h := 180, 60
+	w, h := 100, 20
 
 	boardState := board.RandomState(w, h)
 	render.RenderBoard(boardState)
