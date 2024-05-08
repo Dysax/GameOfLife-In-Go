@@ -1,4 +1,4 @@
-package testies
+package tests
 
 import (
 	"reflect"
