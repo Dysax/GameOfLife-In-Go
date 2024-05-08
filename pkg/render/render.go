@@ -24,7 +24,7 @@ func RenderBoard(array [][]int) {
 	fmt.Println()
 }
 
-// draws an individual sub array
+// draws the sub array where each '1' is displayed as a block ('█') and each '0' as a space.
 func DrawLine(array []int) {
 
 	for i := 0; i < len(array); i++ {

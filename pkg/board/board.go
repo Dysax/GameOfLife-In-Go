@@ -4,15 +4,6 @@ import (
 	"math/rand/v2"
 )
 
-// boardState := [5][6]int{
-// 	{1,1,1,1,1,1,1},
-// 	{1,1,1,1,1,1,1},
-// 	{1,1,1,1,1,1,1},
-// 	{1,1,1,1,1,1,1},
-// 	{1,0,1,1,1,1,1},
-// 	{1,1,1,1,1,1,1}
-// }
-
 func DeadState(w int, h int) [][]int {
 	boardState := make([][]int, h)
 	for i := range boardState {
@@ -55,7 +46,7 @@ func CalculateNewBoard(board [][]int) [][]int {
 	for y := 0; y < len(board); y++ {
 		for x := 0; x < len(board[y]); x++ {
 			newBoard[y][x] = board[y][x]
-			neighbors := aliveNeighbors(board, y, x)
+			neighbors := countAliveNeighbors(board, y, x)
 			if neighbors < 2 {
 				newBoard[y][x] = 0
 			}
@@ -71,8 +62,8 @@ func CalculateNewBoard(board [][]int) [][]int {
 	return newBoard
 }
 
-// TODO: Comment this function better
-func aliveNeighbors(board [][]int, y, x int) int {
+// contents of neighborArray are added to each x and y, then if the result is out of bounds skip past it
+func countAliveNeighbors(board [][]int, y, x int) int {
 	var neighborArray = [][]int{
 		{-1, -1},
 		{0, -1},
@@ -86,8 +77,8 @@ func aliveNeighbors(board [][]int, y, x int) int {
 	count := 0
 
 	for _, n := range neighborArray {
-		row := y + n[1]
 		col := x + n[0]
+		row := y + n[1]
 
 		if row < 0 || row >= len(board) {
 			continue

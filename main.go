@@ -25,18 +25,19 @@ func clearConsole() {
 }
 
 func main() {
-
+	// Press the "q" key anytime to quit the game.
 	err := keyboard.Open()
 	if err != nil {
 		panic(err)
 	}
 	defer keyboard.Close()
 
-	//ticker := time.NewTicker(33 * time.Millisecond)
-	//ticker := time.NewTicker(67 * time.Millisecond)
-	ticker := time.NewTicker(88 * time.Millisecond)
+	//ticker := time.NewTicker(33 * time.Millisecond) // alright
+	//ticker := time.NewTicker(67 * time.Millisecond) // better
+	ticker := time.NewTicker(88 * time.Millisecond) // best
 	done := make(chan bool)
 
+	// resize game board
 	w, h := 100, 20
 
 	boardState := board.RandomState(w, h)
@@ -71,6 +72,6 @@ func main() {
 
 	<-done
 	ticker.Stop()
-	fmt.Println("game over")
+	fmt.Println("Final board")
 
 }
