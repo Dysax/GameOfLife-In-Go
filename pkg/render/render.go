@@ -6,6 +6,7 @@ import (
 
 // draws the entire board
 func RenderBoard(array [][]int) {
+	fmt.Println("Press 'q' to quit")
 	// top boarder
 	for k := 0; k < len(array[0])+2; k++ {
 		fmt.Printf("═")
